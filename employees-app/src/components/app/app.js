@@ -7,6 +7,12 @@ import EmployeesAddForm from '../employee-add-form/employee-add-form';
 import './app.css';
 
 function App() {
+  const data = [
+    { name: 'John S.', salary: 800, increase: false },
+    { name: 'Alex D.', salary: 3000, increase: true },
+    { name: 'Leise H.', salary: 155000, increase: false },
+  ];
+
   return (
     <div className="app">
       <AppInfo />
@@ -16,7 +22,7 @@ function App() {
         <AppFilter />
       </div>
 
-      <EmployeeList />
+      <EmployeeList data={data} />
       <EmployeesAddForm />
     </div>
   );
