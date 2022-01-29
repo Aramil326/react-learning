@@ -7,7 +7,9 @@ class EmployeesAddForm extends Component {
     super(props);
     this.state = {
       name: '',
-      salary: ''
+      salary: '',
+      nameInputClassNames: 'form-control new-post-label',
+      salaryInputClassNames: 'form-control new-post-label'
     }
   }
 
@@ -19,15 +21,41 @@ class EmployeesAddForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.onAdd(this.state.name, this.state.salary);
-    this.setState({
-      name: '',
-      salary: ''
-    })
+
+    if (this.state.name.length < 3 && !this.state.salary) {
+      this.setState({
+        nameInputClassNames: 'form-control new-post-label bg-warning',
+        salaryInputClassNames: 'form-control new-post-label bg-warning'
+      })
+      return
+    } else if (this.state.name.length < 3) {
+      this.setState({
+        nameInputClassNames: 'form-control new-post-label.bg bg-warning',
+        salaryInputClassNames: 'form-control new-post-label'
+      })
+      return
+    } else if (!this.state.salary) {
+      this.setState({
+        salaryInputClassNames: 'form-control new-post-label bg-warning',
+        nameInputClassNames: 'form-control new-post-label'
+      })
+      return
+    } else {
+      this.props.onAdd(this.state.name, this.state.salary);
+      this.setState({
+        name: '',
+        salary: ''
+      })
+      this.setState({
+        nameInputClassNames: 'form-control new-post-label',
+        salaryInputClassNames: 'form-control new-post-label'
+      })
+    }
   }
 
   render() {
-    const { name, salary } = this.state;
+    const { name, salary, nameInputClassNames, salaryInputClassNames } = this.state;
+
 
     return (
       <div className="app-add-form">
@@ -36,13 +64,13 @@ class EmployeesAddForm extends Component {
           className="add-form d-flex"
           onSubmit={this.onSubmit}>
           <input type="text"
-            className="form-control new-post-label"
+            className={nameInputClassNames}
             placeholder="Как его зовут?"
             name="name"
             value={name}
             onChange={this.onValueChange} />
           <input type="number"
-            className="form-control new-post-label"
+            className={salaryInputClassNames}
             placeholder="З/П в $?"
             name="salary"
             value={salary}
