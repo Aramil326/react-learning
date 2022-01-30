@@ -7,15 +7,19 @@ import MarvelService from '../../services/MarvelService'
 
 
 class RandomChar extends Component {
-    constructor(props) {
-        super(props);
-        this.updateChar();
-    }
-
     state = {
         char: {},
         loading: true,
         error: false,
+    }
+
+    componentDidMount() {
+        this.updateChar();
+        this.timerId = setInterval(this.updateChar, 3000);
+    }
+
+    componentDidWillUnmount() {
+        clearInterval(this.timerId);
     }
 
     marvelService = new MarvelService();
