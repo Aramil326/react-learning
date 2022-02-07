@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import PropTypes from 'propTypes';
 
 import AppHeader from "../appHeader/AppHeader";
 import RandomChar from "../randomChar/RandomChar";
@@ -44,6 +45,8 @@ class App extends Component {
     }
 }
 
-
+App.propTypes = {
+    onCharSelected: PropTypes.func.isRequired
+}
 
 export default App;
