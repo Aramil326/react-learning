@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import PropTypes from 'propTypes';
+import PropTypes from 'prop-types';
 
 import AppHeader from "../appHeader/AppHeader";
 import RandomChar from "../randomChar/RandomChar";
