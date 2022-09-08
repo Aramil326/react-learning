@@ -1,26 +1,21 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import './App.css';
 
 const Form = () => {
     const [text, setText] = useState('');
 
-    const myRef = useRef(1);
-
-    useEffect(() => {
-        console.log(myRef.current);
-    })
-
     return (
         <Container>
             <form className="w-50 border mt-5 p-3 m-auto">
                 <div className="mb-3">
-                    <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
+                    <input value={text} type="text" className="form-control" readOnly />
+                    <label htmlFor="exampleFormControlInput1" className="form-label mt-3">Email address</label>
                     <input onChange={(e) => setText(e.target.value)} type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
-                    <textarea onClick={() => myRef.current + 1} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
             </form>
         </Container>
