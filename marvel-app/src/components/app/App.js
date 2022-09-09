@@ -6,10 +6,7 @@ import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
-import TestComponent from '../testComponent/TestComponent'
 import decoration from '../../resources/img/vision.png';
-
-
 
 const App = () => {
     const [selectedChar, setChar] = useState(null)
@@ -20,7 +17,6 @@ const App = () => {
 
     return (
         <div className="app">
-            <TestComponent />
             <AppHeader />
             <main>
                 <ErrorBoundary>
